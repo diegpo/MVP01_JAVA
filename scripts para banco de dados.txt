@@ -1,0 +1,25 @@
+create table tb_clientes(
+	id serial primary key not null,
+	nomecli varchar (30) not null, 
+	documentocli varchar (20)
+)
+
+create table tb_planos(
+	id serial primary key not null,
+	nomeplano varchar (30) not null, 
+	valorplano decimal (100,2)
+)
+
+CREATE TABLE tb_contratos(
+    id serial NOT NULL,
+    idcliente integer NOT NULL,
+    idplano integer NOT NULL,
+	dtvenc date not null, 
+    valor decimal(50,2) NOT NULL,
+    obs varchar(100),
+	primary key (id),
+	foreign key(idcliente) references tb_clientes(id),
+	foreign key(idplano) references tb_planos(id)
+)
+
+insert into tb_contratos (idcliente, idplano, dtvenc, valor, obs) values (1, 2, '2019/04/17', 199.90, '');
